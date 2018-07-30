@@ -15,7 +15,7 @@ import com.mgiglione.model.MangaResult;
 public class MangaService {
 
     Logger logger = LoggerFactory.getLogger(MangaService.class);
-    private static final String MANGA_SEARCH_URL="https://api.jikan.moe/search/manga/";
+    private static final String MANGA_SEARCH_URL="http://api.jikan.moe/search/manga/";
 
     @Autowired
     RestTemplate restTemplate;
