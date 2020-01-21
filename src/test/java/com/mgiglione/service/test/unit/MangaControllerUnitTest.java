@@ -14,6 +14,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mgiglione.model.Manga;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +28,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.mgiglione.controller.MangaController;
-import com.mgiglione.model.Manga;
 import com.mgiglione.service.MangaService;
 
 @SpringBootTest
@@ -48,7 +48,7 @@ public class MangaControllerUnitTest {
     /**
      * List of samples mangas
      */
-    private List<Manga> mangas;
+    private List<Manga> mangases;
 
     @Before
     public void setup() throws Exception {
@@ -57,23 +57,23 @@ public class MangaControllerUnitTest {
         // .build();
         Manga manga1 = Manga.builder()
             .title("Hokuto no ken")
-            .description("The year is 199X. The Earth has been devastated by nuclear war...")
+//            .description("The year is 199X. The Earth has been devastated by nuclear war...")
             .build();
         Manga manga2 = Manga.builder()
             .title("Yumekui Kenbun")
-            .description("For those who suffer nightmares, help awaits at the Ginseikan Tea House, where patrons can order much more than just Darjeeling. Hiruko is a special kind of a private investigator. He's a dream eater....")
+  //          .description("For those who suffer nightmares, help awaits at the Ginseikan Tea House, where patrons can order much more than just Darjeeling. Hiruko is a special kind of a private investigator. He's a dream eater....")
             .build();
 
-        mangas = new ArrayList<>();
-        mangas.add(manga1);
-        mangas.add(manga2);
+        mangases = new ArrayList<>();
+        mangases.add(manga1);
+        mangases.add(manga2);
     }
 
     @Test
     public void testSearchSync() throws Exception {
         
         // Mocking service
-        when(mangaService.getMangasByTitle(any(String.class))).thenReturn(mangas);
+        when(mangaService.getMangasByTitle(any(String.class))).thenReturn(mangases);
 
         mockMvc.perform(get("/manga/sync/ken").contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
@@ -86,7 +86,7 @@ public class MangaControllerUnitTest {
        
 
         // Mocking service
-        when(mangaService.getMangasByTitle(any(String.class))).thenReturn(mangas);
+        when(mangaService.getMangasByTitle(any(String.class))).thenReturn(mangases);
 
         MvcResult result = mockMvc.perform(get("/manga/async/ken").contentType(MediaType.APPLICATION_JSON))
             .andDo(print())
