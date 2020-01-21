@@ -57,11 +57,11 @@ public class MangaControllerUnitTest {
         // .build();
         Manga manga1 = Manga.builder()
             .title("Hokuto no ken")
-//            .description("The year is 199X. The Earth has been devastated by nuclear war...")
+            .synopsis("The year is 199X. The Earth has been devastated by nuclear war...")
             .build();
         Manga manga2 = Manga.builder()
             .title("Yumekui Kenbun")
-  //          .description("For those who suffer nightmares, help awaits at the Ginseikan Tea House, where patrons can order much more than just Darjeeling. Hiruko is a special kind of a private investigator. He's a dream eater....")
+            .synopsis("For those who suffer nightmares, help awaits at the Ginseikan Tea House, where patrons can order much more than just Darjeeling. Hiruko is a special kind of a private investigator. He's a dream eater....")
             .build();
 
         mangas = new ArrayList<>();
