@@ -14,6 +14,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mgiglione.model.Manga;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +28,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.mgiglione.controller.MangaController;
-import com.mgiglione.model.Manga;
 import com.mgiglione.service.MangaService;
 
 @SpringBootTest
@@ -57,11 +57,11 @@ public class MangaControllerUnitTest {
         // .build();
         Manga manga1 = Manga.builder()
             .title("Hokuto no ken")
-            .description("The year is 199X. The Earth has been devastated by nuclear war...")
+            .synopsis("The year is 199X. The Earth has been devastated by nuclear war...")
             .build();
         Manga manga2 = Manga.builder()
             .title("Yumekui Kenbun")
-            .description("For those who suffer nightmares, help awaits at the Ginseikan Tea House, where patrons can order much more than just Darjeeling. Hiruko is a special kind of a private investigator. He's a dream eater....")
+            .synopsis("For those who suffer nightmares, help awaits at the Ginseikan Tea House, where patrons can order much more than just Darjeeling. Hiruko is a special kind of a private investigator. He's a dream eater....")
             .build();
 
         mangas = new ArrayList<>();
