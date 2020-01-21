@@ -48,7 +48,7 @@ public class MangaControllerUnitTest {
     /**
      * List of samples mangas
      */
-    private List<Manga> mangases;
+    private List<Manga> mangas;
 
     @Before
     public void setup() throws Exception {
@@ -64,16 +64,16 @@ public class MangaControllerUnitTest {
   //          .description("For those who suffer nightmares, help awaits at the Ginseikan Tea House, where patrons can order much more than just Darjeeling. Hiruko is a special kind of a private investigator. He's a dream eater....")
             .build();
 
-        mangases = new ArrayList<>();
-        mangases.add(manga1);
-        mangases.add(manga2);
+        mangas = new ArrayList<>();
+        mangas.add(manga1);
+        mangas.add(manga2);
     }
 
     @Test
     public void testSearchSync() throws Exception {
         
         // Mocking service
-        when(mangaService.getMangasByTitle(any(String.class))).thenReturn(mangases);
+        when(mangaService.getMangasByTitle(any(String.class))).thenReturn(mangas);
 
         mockMvc.perform(get("/manga/sync/ken").contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
@@ -86,7 +86,7 @@ public class MangaControllerUnitTest {
        
 
         // Mocking service
-        when(mangaService.getMangasByTitle(any(String.class))).thenReturn(mangases);
+        when(mangaService.getMangasByTitle(any(String.class))).thenReturn(mangas);
 
         MvcResult result = mockMvc.perform(get("/manga/async/ken").contentType(MediaType.APPLICATION_JSON))
             .andDo(print())
