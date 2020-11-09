@@ -19,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.mgiglione.controller.MangaController;
@@ -48,7 +49,7 @@ public class MangaControllerIntegrationTest {
     public void testSearchSync() throws Exception {
         mockMvc.perform(get("/manga/sync/ken").contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.*.title", hasItem(is("Hokuto no Ken"))));
+            .andExpect((ResultMatcher) jsonPath("$.*.title", hasItem(is("Hokuto no Ken"))));
     }
 
     @Test
@@ -62,7 +63,7 @@ public class MangaControllerIntegrationTest {
         mockMvc.perform(asyncDispatch(result))
             .andDo(print())
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.*.title", hasItem(is("Hokuto no Ken"))));
+            .andExpect((ResultMatcher) jsonPath("$.*.title", hasItem(is("Hokuto no Ken"))));
 
     }
 
