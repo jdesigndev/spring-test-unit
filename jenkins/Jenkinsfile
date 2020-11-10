@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3-alpine'
+            image 'aimes-it-elastic:1.0'
+            registryUrl "https://localhost:5000"
             args '-v /root/.m2:/root/.m2'
         }
     }
