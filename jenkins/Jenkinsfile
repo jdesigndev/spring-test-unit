@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Elastic') {
             steps {
-                sh '/usr/share/elasticsearch/bin/elasticsearch'
+                sh 'runuser -l elasticsearch -c /usr/share/elasticsearch/bin/elasticsearch'
             }
         }
         stage('Build') {
