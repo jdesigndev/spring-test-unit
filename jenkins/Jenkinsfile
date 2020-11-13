@@ -6,9 +6,9 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Seed') {
+        stage('Elastic') {
             steps {
-                sh '/docker-entrypoint.sh'
+                sh '/usr/share/elasticsearch/bin/elasticsearch'
             }
         }
         stage('Build') {
