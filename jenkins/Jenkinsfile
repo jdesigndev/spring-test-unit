@@ -6,6 +6,11 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
+        stage('Seed') {
+            steps {
+                sh '/root/docker-entrypoint.sh'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
