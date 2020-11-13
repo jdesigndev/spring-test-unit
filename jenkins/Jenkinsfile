@@ -6,9 +6,14 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Elastic') {
+        stage('Elastic Start') {
             steps {
-                sh 'runuser -l elasticsearch -c /usr/share/elasticsearch/bin/elasticsearch'
+                sh 'runuser -l elasticsearch -c /usr/share/elasticsearch/bin/elasticsearch &'
+            }
+        }
+        stage('Seed') {
+            steps {
+                sh '/usr/share/elasticsearch/utils/wait-for-it.sh localhost:9200 -- /usr/share/elasticsearch/config/setup.sh'
             }
         }
         stage('Build') {
