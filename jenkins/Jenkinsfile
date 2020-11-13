@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Seed') {
             steps {
-                sh '/root/docker-entrypoint.sh'
+                sh '/docker-entrypoint.sh'
             }
         }
         stage('Build') {
